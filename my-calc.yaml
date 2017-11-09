@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: my-calc-rc
+spec:
+  replicas: 2
+  selector:
+    app: my-calc
+  template:
+    metadata:
+      labels:
+        app: my-calc
+    spec:
+      containers:
+      - name: my-calc
+        image: leejung168/myflask
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-calc-service
+
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+  selector:
+    app: my-calc

@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: ram-check
+spec:
+  selector:
+    app: checkRam
+    version: v1
+  template:
+    metadata:
+      labels:
+        app: checkRam
+        version: v1
+        owner: lz
+    spec:
+      containers:
+      - name: ubuntu-free
+        image: ubuntu
+        command: ["/bin/bash", "-c", "while true; do free; sleep 30; done"]
+      restartPolicy: Always

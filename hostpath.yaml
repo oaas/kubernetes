@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: centos-hostpath
+spec:
+  containers:
+  - image: centos
+    name: centos-hostpath
+    command:
+    - sleep
+    - "3600"
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data

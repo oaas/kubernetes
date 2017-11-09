@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: podtoservcie
+spec:
+  replicas: 2
+  selector:
+    app: nginx
+  template:
+    metadata:
+      name: podtoservice
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-podtoservice
+        image: nginx
+        ports:
+        - containerPort: 80

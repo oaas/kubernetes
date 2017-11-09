@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Job
+metadata:
+  name: package-check
+spec:
+  selector:
+    matchLabels:
+      image: ubuntu
+      test: dpkg
+  template:
+    metadata:
+      labels:
+        image: ubuntu
+        test: dpkg
+        owner: lz
+    spec:
+      containers:
+      - name: package-check
+        image: ubuntu
+        command: ["dpkg-query", "-l"]
+      restartPolicy: Never

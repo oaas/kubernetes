@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotations-example
+  labels:
+    app: nginx
+  annotations:
+    container: nginx
+
+spec:
+  containers:
+  - name: annotations-example
+    image: nginx
+    ports:
+    - containerPort: 80
