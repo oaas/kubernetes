@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-centos6
+spec:
+  containers:
+  - name: my-centos6
+    image: centos
